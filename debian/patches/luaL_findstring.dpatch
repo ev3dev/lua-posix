@@ -1,0 +1,26 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## luaL_findstring.dpatch by Enrico Tassi <gareuselesinge@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+diff -urNad trunk~/lposix.c trunk/lposix.c
+--- trunk~/lposix.c	2003-11-06 01:23:48.000000000 +0100
++++ trunk/lposix.c	2006-08-26 15:31:41.000000000 +0200
+@@ -33,6 +33,15 @@
+ #define MYBUFSIZ 512
+ #endif
+ 
++static int luaL_findstring (const char *name, const char *const list[]) {
++  int i;
++  for (i=0; list[i]; i++)
++    if (strcmp(list[i], name) == 0)
++      return i;
++  return -1;  /* name not found */
++}
++
++
+ #include "modemuncher.c"
+ 
+ static const char *filetype(mode_t m)

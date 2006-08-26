@@ -1,0 +1,5 @@
+lua-posix (1.0-1) unstable; urgency=low
+
+  * Initial release. (Closes: #XXXXXX)
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Sat, 26 Aug 2006 15:19:13 +0200

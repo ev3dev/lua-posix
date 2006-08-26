@@ -1,0 +1,28 @@
+Source: lua-posix
+Section: interpreters
+Priority: optional
+Maintainer: Enrico Tassi <gareuselesinge@debian.org>
+Build-Depends: cdbs (>= 0.4.23-1.1), debhelper (>= 4.1.0), dpatch, lua5.1-policy-dev
+Standards-Version: 3.7.2
+
+Package: liblua5.1-posix0
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: posix library for the lua language version 5.1
+ Lua is a powerful, light-weight programming language designed for extending
+ applications.
+ .
+ This package contains the lua posix library.
+ Homepage: <http://www.luaforge.net/projects/lposix>
+
+Package: liblua5.1-posix-dev
+Architecture: any
+Depends: liblua5.1-posix0 (= ${Source-Version})
+Description: posix development files for the lua language version 5.1
+ Lua is a powerful, light-weight programming language designed for extending
+ applications.
+ .
+ This package contains the development files of the lua posix library,
+ useful to create a statically linked binary (like a C application or a
+ standalone lua interpreter).
+ Homepage: <http://www.luaforge.net/projects/lposix>

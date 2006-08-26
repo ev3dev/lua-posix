@@ -1,0 +1,35 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## test.lua.dpatch by Enrico Tassi <gareuselesinge@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+diff -urNad trunk~/test.lua trunk/test.lua
+--- trunk~/test.lua	2003-11-07 12:42:30.000000000 +0100
++++ trunk/test.lua	2006-08-26 15:59:16.000000000 +0200
+@@ -41,7 +41,7 @@
+ f"HOME"
+ f"SHELL"
+ f"absent"
+-for k in ox.getenv() do io.write(k,"\t") end io.write"\n"
++for _,k in pairs(ox.getenv()) do io.write(k,"\t") end io.write"\n"
+ 
+ ------------------------------------------------------------------------------
+ testing"putenv"
+@@ -179,11 +179,11 @@
+ ------------------------------------------------------------------------------
+ testing"times"
+ a=ox.times()
+-for k,v in a do print(k,v) end
+-print"sleeping 10 seconds..."
+-ox.sleep(10)
++for k,v in pairs(a) do print(k,v) end
++print"sleeping 2 seconds..."
++ox.sleep(2)
+ b=ox.times()
+-for k,v in b do print(k,v) end
++for k,v in pairs(b) do print(k,v) end
+ print""
+ print("elapsed",b.elapsed-a.elapsed)
+ print("clock",os.clock())
