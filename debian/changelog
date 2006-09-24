@@ -1,8 +1,9 @@
-lua-posix (1.0-2) UNRELEASED; urgency=low
+lua-posix (1.0-2) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * added 'bsdmainutils' to the Build-depends field.
+  * added XS-X-Vcs-svn ield in control file
 
- -- Enrico Tassi <gareuselesinge@debian.org>  Sun,  3 Sep 2006 10:32:12 +0200
+ -- Enrico Tassi <gareuselesinge@debian.org>  Sun, 24 Sep 2006 11:52:40 +0200
 
 lua-posix (1.0-1) unstable; urgency=low
 
