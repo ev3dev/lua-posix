@@ -1,6 +1,6 @@
-lua-posix (1.0-3) UNRELEASED; urgency=low
+lua-posix (1.0-3) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * added XS-X-Vcs-svn field to control.
 
  -- Enrico Tassi <gareuselesinge@debian.org>  Sun, 24 Sep 2006 11:56:46 +0200
 
