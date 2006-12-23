@@ -1,6 +1,6 @@
 lua-posix (1.0-4) UNRELEASED; urgency=low
 
-  * NOT RELEASED YET
+  * Moved to policy version 7
 
  -- Enrico Tassi <gareuselesinge@debian.org>  Fri, 13 Oct 2006 13:31:47 +0200
 
