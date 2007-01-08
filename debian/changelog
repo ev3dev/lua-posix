@@ -1,8 +1,10 @@
-lua-posix (1.0-4) UNRELEASED; urgency=low
+lua-posix (1.0-4) unstable; urgency=low
 
   * Moved to policy version 7
+  * The FTBFS bug #405992 was caused by the new policy (version 7).
+    This upload fixes the bug. (Closes: #405992)
 
- -- Enrico Tassi <gareuselesinge@debian.org>  Fri, 13 Oct 2006 13:31:47 +0200
+ -- Enrico Tassi <gareuselesinge@debian.org>  Mon,  8 Jan 2007 17:32:46 +0100
 
 lua-posix (1.0-3) unstable; urgency=low
 
