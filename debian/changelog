@@ -3,6 +3,7 @@ lua-posix (1.0-6) UNRELEASED; urgency=low
   * NOT RELEASED YET
   * Added a note about the documentation shipped within the -dev package
     in the control file
+  * Added call to `lua5.1-policy-apply --reverse` in the clean:: hook
 
  -- Enrico Tassi <gareuselesinge@debian.org>  Tue,  6 Feb 2007 12:12:37 +0100
 

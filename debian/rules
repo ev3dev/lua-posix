@@ -10,4 +10,6 @@ DEB_MAKE_INSTALL_TARGET := install -f Makefile.Debian DESTDIR=$(DEB_DESTDIR)
 DEB_DH_INSTALL_SOURCEDIR := $(DEB_DESTDIR)
 pre-build::
 	lua5.1-policy-apply
+clean::
+	lua5.1-policy-apply --reverse
 
