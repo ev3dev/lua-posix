@@ -1,11 +1,11 @@
-lua-posix (1.0-6) UNRELEASED; urgency=low
+lua-posix (1.0-6) unstable; urgency=low
 
-  * NOT RELEASED YET
   * Added a note about the documentation shipped within the -dev package
     in the control file
   * Added call to `lua5.1-policy-apply --reverse` in the clean:: hook
+  * Added a patch to define CLK_TCK (Closes: #422010) 
 
- -- Enrico Tassi <gareuselesinge@debian.org>  Tue,  6 Feb 2007 12:12:37 +0100
+ -- Enrico Tassi <gareuselesinge@debian.org>  Mon, 07 May 2007 14:02:14 +0200
 
 lua-posix (1.0-5) unstable; urgency=low
 

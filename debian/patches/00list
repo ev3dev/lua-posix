@@ -1,3 +1,4 @@
 luaL_findstring.dpatch
 test.lua.dpatch
 luaL_register.dpatch
+CLK_TCK.dpatch
