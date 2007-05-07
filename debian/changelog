@@ -1,3 +1,9 @@
+lua-posix (1.0-7) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Mon, 07 May 2007 14:25:57 +0200
+
 lua-posix (1.0-6) unstable; urgency=low
 
   * Added a note about the documentation shipped within the -dev package
