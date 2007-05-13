@@ -16,7 +16,7 @@ Description: posix library for the lua language version 5.1
 
 Package: liblua5.1-posix-dev
 Architecture: any
-Depends: liblua5.1-posix0 (= ${Source-Version})
+Depends: liblua5.1-posix0 (= ${binary:Version})
 Description: posix development files for the lua language version 5.1
  This package contains the development files of the lua posix library,
  useful to create a statically linked binary (like a C application or a
