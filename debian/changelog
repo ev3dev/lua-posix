@@ -1,6 +1,7 @@
-lua-posix (1.0-7) UNRELEASED; urgency=low
+lua-posix (1.0-7) unstable; urgency=low
 
   * made control file binNMU safe
+  * moved to policy 10 and fixed clean target (Closes: #424554)
 
  -- Enrico Tassi <gareuselesinge@debian.org>  Mon, 07 May 2007 14:25:57 +0200
 
