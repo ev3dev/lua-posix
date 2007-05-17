@@ -1,3 +1,9 @@
+lua-posix (1.0-8) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Thu, 17 May 2007 11:37:58 +0200
+
 lua-posix (1.0-7) unstable; urgency=low
 
   * made control file binNMU safe
