@@ -1,3 +1,9 @@
+lua-posix (5.1.2-2) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Tue, 12 Feb 2008 13:49:12 +0100
+
 lua-posix (5.1.2-1) unstable; urgency=low
 
   * New upstream package, a fork of the previous under the same terms.
