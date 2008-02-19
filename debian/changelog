@@ -1,6 +1,6 @@
-lua-posix (5.1.2-2) UNRELEASED; urgency=low
+lua-posix (5.1.2-2) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * Fixed ABI/API to 1:0:0
 
  -- Enrico Tassi <gareuselesinge@debian.org>  Tue, 12 Feb 2008 13:49:12 +0100
 
