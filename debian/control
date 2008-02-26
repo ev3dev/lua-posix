@@ -10,6 +10,8 @@ Homepage: http://luaforge.net/projects/luaposix/
 
 Package: liblua5.1-posix1
 Architecture: any
+Conflicts: liblua5.1-posix0 
+Replaces: liblua5.1-posix0
 Depends: ${shlibs:Depends}
 Description: posix library for the lua language version 5.1
  This package contains the lua posix library, that includes some posix
