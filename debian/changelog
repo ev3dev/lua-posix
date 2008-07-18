@@ -1,8 +1,9 @@
-lua-posix (5.1.2-4) UNRELEASED; urgency=low
+lua-posix (5.1.3-1) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * New upstream release
+  * Patch by Myhailo Danylenko integrated (Closes: #491257)
 
- -- Enrico Tassi <gareuselesinge@debian.org>  Tue, 26 Feb 2008 19:39:40 +0100
+ -- Enrico Tassi <gareuselesinge@debian.org>  Fri, 18 Jul 2008 09:49:22 +0200
 
 lua-posix (5.1.2-3) unstable; urgency=low
 
