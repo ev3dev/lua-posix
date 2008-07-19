@@ -2,7 +2,7 @@
 ## CLK_TCK.dpatch by Enrico Tassi <gareuselesinge@debian.org>
 ##
 ## All lines beginning with `## DP:' are a description of the patch.
-## DP: No description.
+## DP: add a define for CLK_TCK.
 
 @DPATCH@
 diff -urNad trunk~/lposix.c trunk/lposix.c
