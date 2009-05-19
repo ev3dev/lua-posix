@@ -13,18 +13,16 @@ Architecture: any
 Conflicts: liblua5.1-posix0 
 Replaces: liblua5.1-posix0
 Depends: ${shlibs:Depends}
-Description: posix library for the lua language version 5.1
- This package contains the lua posix library, that includes some posix
+Description: posix library for the Lua language version 5.1
+ This package contains the Lua posix library, that includes some posix
  functions like fork, chmod, wait, sleep and kill.
- Homepage: <http://www.luaforge.net/projects/lposix>
 
 Package: liblua5.1-posix-dev
 Architecture: any
 Section: libdevel
 Depends: liblua5.1-posix1 (= ${binary:Version})
-Description: posix development files for the lua language version 5.1
- This package contains the development files of the lua posix library,
+Description: posix development files for the Lua language version 5.1
+ This package contains the development files of the Lua posix library,
  useful to create a statically linked binary (like a C application or a
- standalone lua interpreter).
+ standalone Lua interpreter).
  Documentation is also shipped within this package.
- Homepage: <http://www.luaforge.net/projects/lposix>
