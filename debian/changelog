@@ -1,8 +1,10 @@
-lua-posix (5.1.4-2) UNRELEASED; urgency=low
+lua-posix (5.1.4-2) unstable; urgency=low
 
   * fixed Homepage field
+  * bumped standards-version to 3.8.2, no changes
+  * build-depend on lua5.1-policy-dev >= 22
 
- -- Enrico Tassi <gareuselesinge@debian.org>  Tue, 19 May 2009 17:43:00 +0200
+ -- Enrico Tassi <gareuselesinge@debian.org>  Tue, 21 Jul 2009 16:47:12 +0200
 
 lua-posix (5.1.4-1) unstable; urgency=low
 
