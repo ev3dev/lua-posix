@@ -1,9 +1,12 @@
-lua-posix (5.1.4-3) UNRELEASED; urgency=low
+lua-posix (5.1.4-3) unstable; urgency=low
 
-  * NOT RELEASED YET
   * Updated debian/copyright URL, thanks Rubens Thomas for the patch
+  * rebuild with lua5.1-policy-dev >= 25 to obtain C89 comments 
+    (Closes: #545813)
+  * update standards-version to 3.8.3, added README.source mentioning
+    default dpatch README
 
- -- Enrico Tassi <gareuselesinge@debian.org>  Mon, 24 Aug 2009 22:50:50 +0200
+ -- Enrico Tassi <gareuselesinge@debian.org>  Wed, 09 Sep 2009 21:12:33 +0200
 
 lua-posix (5.1.4-2) unstable; urgency=low
 
