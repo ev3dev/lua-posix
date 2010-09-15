@@ -1,8 +1,9 @@
 lua-posix (5.1.4-4) UNRELEASED; urgency=low
 
   * NOT RELEASED YET
+  * removed CLK_TCK.dpatch, no more needed. 
 
- -- Enrico Tassi <gareuselesinge@debian.org>  Wed, 15 Sep 2010 09:33:07 +0200
+ -- Enrico Tassi <gareuselesinge@debian.org>  Wed, 15 Sep 2010 16:06:02 +0200
 
 lua-posix (5.1.4-3) unstable; urgency=low
 
