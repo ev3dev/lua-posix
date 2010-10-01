@@ -1,6 +1,6 @@
-lua-posix (5.1.4-4) UNRELEASED; urgency=low
+lua-posix (5.1.7-1) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * new upstream release
   * removed CLK_TCK.dpatch, no more needed. 
 
  -- Enrico Tassi <gareuselesinge@debian.org>  Wed, 15 Sep 2010 16:06:02 +0200
