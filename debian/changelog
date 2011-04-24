@@ -1,9 +1,13 @@
-lua-posix (5.1.7-1) unstable; urgency=low
+lua-posix (5.1.9-1) unstable; urgency=low
 
   * new upstream release
   * removed CLK_TCK.dpatch, no more needed. 
+  * update standards-version to 3.9.2, no changes
+  * source format 3.0 (quilt)
+  * depend on lua5.1-policy-dev >= 27 to get rid of .la files (Closes: #622491)
+  * added watch file
 
- -- Enrico Tassi <gareuselesinge@debian.org>  Wed, 15 Sep 2010 16:06:02 +0200
+ -- Enrico Tassi <gareuselesinge@debian.org>  Sun, 24 Apr 2011 19:08:01 +0200
 
 lua-posix (5.1.4-3) unstable; urgency=low
 

@@ -2,8 +2,8 @@ Source: lua-posix
 Section: interpreters
 Priority: optional
 Maintainer: Enrico Tassi <gareuselesinge@debian.org>
-Build-Depends: cdbs (>= 0.4.23-1.1), debhelper (>= 5), dpatch, lua5.1-policy-dev (>= 25), bsdmainutils
-Standards-Version: 3.8.3
+Build-Depends: cdbs (>= 0.4.23-1.1), debhelper (>= 5), lua5.1-policy-dev (>= 27), bsdmainutils
+Standards-Version: 3.9.2
 Vcs-Svn: svn://svn.debian.org/pkg-lua/packages/lua-posix
 Vcs-Browser: http://svn.debian.org/viewsvn/pkg-lua/packages/lua-posix
 Homepage: http://luaforge.net/projects/luaposix/
