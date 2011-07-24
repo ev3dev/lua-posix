@@ -1,8 +1,8 @@
-lua-posix (5.1.9-2) UNRELEASED; urgency=low
+lua-posix (5.1.9-2) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * Patch to fix kfreebsd compilation (Closes: #635213)
 
- -- Enrico Tassi <gareuselesinge@debian.org>  Sat, 23 Jul 2011 11:15:45 +0200
+ -- Enrico Tassi <gareuselesinge@debian.org>  Sun, 24 Jul 2011 15:39:10 +0200
 
 lua-posix (5.1.9-1) unstable; urgency=low
 

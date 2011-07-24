@@ -1,0 +1,48 @@
+Index: lua-posix-5.1.9/lposix.c
+===================================================================
+--- lua-posix-5.1.9.orig/lposix.c	2011-07-24 15:14:22.000000000 +0200
++++ lua-posix-5.1.9/lposix.c	2011-07-24 15:17:46.000000000 +0200
+@@ -44,6 +44,10 @@
+ #define MYNAME		"posix"
+ #define MYVERSION	MYNAME " library for " LUA_VERSION " / " VERSION
+ 
++#ifndef MAX_PATH
++#define MAX_PATH 1024
++#endif
++
+ #include "lua.h"
+ #include "lualib.h"
+ #include "lauxlib.h"
+@@ -1866,7 +1870,9 @@
+ 	set_const("ENETUNREACH", ENETUNREACH);
+ 	set_const("ENFILE", ENFILE);
+ 	set_const("ENOBUFS", ENOBUFS);
++#ifdef ENODATA
+ 	set_const("ENODATA", ENODATA);
++#endif
+ 	set_const("ENODEV", ENODEV);
+ 	set_const("ENOENT", ENOENT);
+ 	set_const("ENOEXEC", ENOEXEC);
+@@ -1875,8 +1881,12 @@
+ 	set_const("ENOMSG", ENOMSG);
+ 	set_const("ENOPROTOOPT", ENOPROTOOPT);
+ 	set_const("ENOSPC", ENOSPC);
++#ifdef ENOSR
+ 	set_const("ENOSR", ENOSR);
++#endif
++#ifdef ENOSTR
+ 	set_const("ENOSTR", ENOSTR);
++#endif
+ 	set_const("ENOSYS", ENOSYS);
+ 	set_const("ENOTCONN", ENOTCONN);
+ 	set_const("ENOTDIR", ENOTDIR);
+@@ -1896,7 +1906,9 @@
+ 	set_const("EROFS", EROFS);
+ 	set_const("ESPIPE", ESPIPE);
+ 	set_const("ESRCH", ESRCH);
++#ifdef ETIME
+ 	set_const("ETIME", ETIME);
++#endif
+ 	set_const("ETIMEDOUT", ETIMEDOUT);
+ 	set_const("ETXTBSY", ETXTBSY);
+ 	set_const("EWOULDBLOCK", EWOULDBLOCK);
