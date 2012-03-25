@@ -2,5 +2,4 @@
 # uscan --watchfile debian/watch --upstream-version 0.0.1 --package lua-posix
 #
 version=3
-http://luaforge.net/frs/?group_id=344 \
-	/frs/download.php/\d+/luaposix-([\d\.]*).tar.gz
+https://github.com/rrthomas/luaposix/downloads .*/luaposix-(.+).tar.gz

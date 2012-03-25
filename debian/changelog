@@ -1,8 +1,15 @@
-lua-posix (5.1.9-3) UNRELEASED; urgency=low
+lua-posix (5.1.18-1) UNRELEASED; urgency=low
 
   * NOT RELEASED YET
+  * New upstream release
+  * Switch to dh-lua
+  * Build for lua5.1 and lua5.2
+  * Updated copyright file 
+  * Update watch file 
+  * debian/compat to 7 
+  * Standards-version to 3.9.3, no changes 
 
- -- Enrico Tassi <gareuselesinge@debian.org>  Sun, 24 Jul 2011 15:41:24 +0200
+ -- Enrico Tassi <gareuselesinge@debian.org>  Sun, 25 Mar 2012 16:58:57 +0200
 
 lua-posix (5.1.9-2) unstable; urgency=low
 
