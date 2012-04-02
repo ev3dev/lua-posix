@@ -12,8 +12,8 @@ Package: lua-posix
 Architecture: any
 Multi-Arch: same
 Pre-Depends: multiarch-support
-Replaces: liblua5.1-posix1 (<< 5.1.17-1~)
-Breaks: liblua5.1-posix1 (<< 5.1.17-1~)
+Replaces: liblua5.1-posix1 (<< 5.1.18-1~)
+Breaks: liblua5.1-posix1 (<< 5.1.18-1~)
 Provides: liblua5.1-posix1, ${lua:Provides}
 Depends: ${shlibs:Depends}, ${misc:Depends}
 XB-Lua-Versions: ${lua:Versions}
@@ -26,8 +26,8 @@ Architecture: any
 Multi-Arch: same
 Pre-Depends: multiarch-support
 Section: libdevel
-Replaces: liblua5.1-posix-dev (<< 5.1.17-1~)
-Breaks: liblua5.1-posix-dev (<< 5.1.17-1~)
+Replaces: liblua5.1-posix-dev (<< 5.1.18-1~)
+Breaks: liblua5.1-posix-dev (<< 5.1.18-1~)
 Provides: liblua5.1-posix-dev, ${lua:Provides}
 Depends: lua-posix (= ${binary:Version}), ${misc:Depends}
 XB-Lua-Versions: ${lua:Versions}
