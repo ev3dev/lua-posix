@@ -1,0 +1,48 @@
+Index: lua-posix-5.1.18/lposix.c
+===================================================================
+--- lua-posix-5.1.18.orig/lposix.c	2012-02-29 15:32:39.000000000 +0100
++++ lua-posix-5.1.18/lposix.c	2012-04-03 09:49:43.000000000 +0200
+@@ -47,6 +47,10 @@
+ #define MYNAME		"posix"
+ #define MYVERSION	MYNAME " library for " LUA_VERSION " / " VERSION
+ 
++#ifndef MAX_PATH
++#define MAX_PATH 1024
++#endif
++
+ #include "lua.h"
+ #include "lualib.h"
+ #include "lauxlib.h"
+@@ -2343,7 +2347,9 @@
+ 	MENTRY( NETUNREACH	);
+ 	MENTRY( NFILE		);
+ 	MENTRY( NOBUFS		);
++#ifdef ENODATA
+ 	MENTRY( NODATA		);
++#endif
+ 	MENTRY( NODEV		);
+ 	MENTRY( NOENT		);
+ 	MENTRY( NOEXEC		);
+@@ -2352,8 +2358,12 @@
+ 	MENTRY( NOMSG		);
+ 	MENTRY( NOPROTOOPT	);
+ 	MENTRY( NOSPC		);
++#ifdef ENOSR
+ 	MENTRY( NOSR		);
++#endif
++#ifdef ENOSTR
+ 	MENTRY( NOSTR		);
++#endif
+ 	MENTRY( NOSYS		);
+ 	MENTRY( NOTCONN		);
+ 	MENTRY( NOTDIR		);
+@@ -2373,7 +2383,9 @@
+ 	MENTRY( ROFS		);
+ 	MENTRY( SPIPE		);
+ 	MENTRY( SRCH		);
++#ifdef ETIME
+ 	MENTRY( TIME		);
++#endif
+ 	MENTRY( TIMEDOUT	);
+ 	MENTRY( TXTBSY		);
+ 	MENTRY( WOULDBLOCK	);

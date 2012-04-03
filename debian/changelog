@@ -1,8 +1,8 @@
-lua-posix (5.1.18-2) UNRELEASED; urgency=low
+lua-posix (5.1.18-2) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * Re-enable patch for kfreebsd
 
- -- Enrico Tassi <gareuselesinge@debian.org>  Mon, 02 Apr 2012 16:51:13 +0200
+ -- Enrico Tassi <gareuselesinge@debian.org>  Tue, 03 Apr 2012 09:52:01 +0200
 
 lua-posix (5.1.18-1) unstable; urgency=low
 
