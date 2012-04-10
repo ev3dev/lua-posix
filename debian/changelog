@@ -1,8 +1,9 @@
-lua-posix (5.1.18-4) UNRELEASED; urgency=low
+lua-posix (5.1.19-1) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * New upstream release
+  * Patches for hurd and kfreebsd not needed anylongher
 
- -- Enrico Tassi <gareuselesinge@debian.org>  Tue, 03 Apr 2012 13:27:10 +0200
+ -- Enrico Tassi <gareuselesinge@debian.org>  Tue, 10 Apr 2012 15:05:04 +0200
 
 lua-posix (5.1.18-3) unstable; urgency=low
 
