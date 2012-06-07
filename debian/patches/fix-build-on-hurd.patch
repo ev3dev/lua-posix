@@ -1,0 +1,42 @@
+Index: lua-posix-5.1.19/lposix.c
+===================================================================
+--- lua-posix-5.1.19.orig/lposix.c	2012-04-08 15:47:11.000000000 +0200
++++ lua-posix-5.1.19/lposix.c	2012-06-07 16:47:54.000000000 +0200
+@@ -8,6 +8,9 @@
+ * Based on original by Claudio Terra for Lua 3.x.
+ * With contributions by Roberto Ierusalimschy.
+ */
++#ifdef __GNU__
++#define _GNU_SOURCE
++#endif
+ 
+ #include <config.h>
+ 
+@@ -543,7 +546,19 @@
+ 
+ static int Pgetcwd(lua_State *L)		/** getcwd() */
+ {
++#ifdef __GNU__
++	char *b = get_current_dir_name();
++	if (b != NULL) {
++		lua_pushstring(L, b);
++		return 1;
++	} else {
++		// we return the same error as below
++		return pusherror(L, ".");
++	}
++#else
+ 	long size = pathconf(".", _PC_PATH_MAX);
++	if (size == -1)
++		return pusherror(L, "pathconf");
+ 	void *ud;
+ 	lua_Alloc lalloc = lua_getallocf(L, &ud);
+ 	char *b, *ret;
+@@ -554,6 +569,7 @@
+ 		lua_pushstring(L, b);
+ 	lalloc(ud, b, 0, 0);
+ 	return (ret == NULL) ? pusherror(L, ".") : 1;
++#endif
+ }
+ 
+ static int Pmkdir(lua_State *L)			/** mkdir(path) */

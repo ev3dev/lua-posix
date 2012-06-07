@@ -9,12 +9,12 @@ License: MIT/X
 
 Files: lcurses.c
 Copyright: 2004-2007, Tiago Dionizio <tiago.dionizio@gmail.com>
-Copyright: 2009-2011, Reuben Thomas <rrt@sc3d.org>
+  2009-2011, Reuben Thomas <rrt@sc3d.org>
 License: MIT/X
 
 Files: lposix.c
 Copyright: 2010-2012, Reuben Thomas <rrt@sc3d.org>
-Copyright: 2008-2010, Natanael Copa <natanael.copa@gmail.com>
+  2008-2010, Natanael Copa <natanael.copa@gmail.com>
 License: MIT/X
 
 Files: strlcpy.c
