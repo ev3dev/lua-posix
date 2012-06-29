@@ -1,0 +1,11 @@
+diff -u a/lcurses.c b/lcurses.c
+--- a/lcurses.c	2012-06-29 20:43:19.000000000 +0200
++++ b/lcurses.c	2012-06-29 20:42:55.000000000 +0200
+@@ -28,6 +28,7 @@
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#define LUA_COMPAT_ALL
+ #include <lua.h>
+ #include <lauxlib.h>
+ #include "lua52compat.h"

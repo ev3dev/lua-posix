@@ -1,6 +1,7 @@
-lua-posix (5.1.19-3) UNRELEASED; urgency=low
+lua-posix (5.1.20-1) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * New upstream release, with many bigfixes
+  * Add patch lua5.2-compat.patch to fix compiltion for Lua 5.2
 
  -- Enrico Tassi <gareuselesinge@debian.org>  Thu, 07 Jun 2012 16:54:39 +0200
 
