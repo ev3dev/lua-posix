@@ -2,7 +2,7 @@ Source: lua-posix
 Section: interpreters
 Priority: optional
 Maintainer: Enrico Tassi <gareuselesinge@debian.org>
-Build-Depends: debhelper (>= 8.1.3), dh-lua (>= 8), libncurses5-dev
+Build-Depends: debhelper (>= 8.1.3), dh-lua (>= 8), libncurses5-dev, lua-bitop
 Standards-Version: 3.9.3
 Vcs-Svn: svn://svn.debian.org/pkg-lua/packages/lua-posix
 Vcs-Browser: http://svn.debian.org/viewsvn/pkg-lua/packages/lua-posix
@@ -15,7 +15,7 @@ Pre-Depends: multiarch-support
 Replaces: liblua5.1-posix1 (<< 5.1.18-1~)
 Breaks: liblua5.1-posix1 (<< 5.1.18-1~)
 Provides: liblua5.1-posix1, ${lua:Provides}
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, lua-bitop
 XB-Lua-Versions: ${lua:Versions}
 Description: posix library for the Lua language
  This package contains the Lua posix library, that includes some posix
