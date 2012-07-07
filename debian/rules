@@ -5,7 +5,7 @@
 
 override_dh_auto_configure:
 	./configure --with-lua-suffix=5.1 \
-		CFLAGS="`pkg-config lua5.1 ncurses --cflags`"
+		CFLAGS="`pkg-config lua5.1 ncursesw --cflags`"
 	dh_auto_configure
 
 override_dh_auto_test:

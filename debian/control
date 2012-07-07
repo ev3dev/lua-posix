@@ -2,7 +2,7 @@ Source: lua-posix
 Section: interpreters
 Priority: optional
 Maintainer: Enrico Tassi <gareuselesinge@debian.org>
-Build-Depends: debhelper (>= 8.1.3), dh-lua (>= 8), libncurses5-dev, lua-bitop
+Build-Depends: debhelper (>= 8.1.3), dh-lua (>= 8), libncursesw5-dev, lua-bitop
 Standards-Version: 3.9.3
 Vcs-Svn: svn://svn.debian.org/pkg-lua/packages/lua-posix
 Vcs-Browser: http://svn.debian.org/viewsvn/pkg-lua/packages/lua-posix

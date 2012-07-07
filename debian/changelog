@@ -1,3 +1,9 @@
+lua-posix (5.1.20-2) unstable; urgency=low
+
+  * Build-Depend on libncursesw5-dev to be able to handle UTF-8 strings 
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Sat, 07 Jul 2012 18:36:24 +0200
+
 lua-posix (5.1.20-1) unstable; urgency=low
 
   * New upstream release, with many bigfixes
