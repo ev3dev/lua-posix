@@ -1,6 +1,8 @@
-lua-posix (5.1.20-3) UNRELEASED; urgency=low
+lua-posix (29-1) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * New upstream release
+  * lua5.2-compat.patch not needed anymore, removed 
+  * Transitional packages for wheezy removed 
 
  -- Enrico Tassi <gareuselesinge@debian.org>  Sat, 07 Jul 2012 19:07:41 +0200
 
