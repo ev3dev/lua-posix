@@ -9,6 +9,11 @@ override_dh_auto_configure:
 		CFLAGS="`pkg-config lua5.1 ncursesw --cflags`"
 	dh_auto_configure
 
+override_dh_auto_build:
+	dh_auto_build
+	ldoc .
+
+
 override_dh_auto_test:
 	touch dummy.la
 	dh_auto_test
