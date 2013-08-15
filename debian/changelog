@@ -1,3 +1,9 @@
+lua-posix (29-3) unstable; urgency=low
+
+  * Ship the doc built using lua-doc 
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Thu, 15 Aug 2013 13:19:36 +0200
+
 lua-posix (29-2) unstable; urgency=low
 
   * Revamp patch to fix build on hurd
