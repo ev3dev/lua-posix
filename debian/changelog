@@ -1,6 +1,7 @@
 lua-posix (29-4) unstable; urgency=low
 
   * Use upstream's patch to support Hurd 
+  * Disable kFreeBSD patch, should be fixed upstream 
 
  -- Enrico Tassi <gareuselesinge@debian.org>  Mon, 26 Aug 2013 10:44:24 +0200
 

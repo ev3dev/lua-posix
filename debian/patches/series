@@ -1,2 +1,2 @@
 0001-posix-port-getcwd-to-Hurd.patch
-0002-Fix-compilation-on-kfreebsd.patch
+#0002-Fix-compilation-on-kfreebsd.patch
