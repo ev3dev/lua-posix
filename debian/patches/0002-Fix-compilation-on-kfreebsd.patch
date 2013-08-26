@@ -9,18 +9,18 @@ Freebsd kernel on GNU userland:
  1 file changed, 6 insertions(+)
 
 diff --git a/lposix.c b/lposix.c
-index fa4c0b9..083db4e 100644
+index 469a094..5aa2883 100644
 --- a/lposix.c
 +++ b/lposix.c
-@@ -4150,6 +4150,7 @@ LUALIB_API int luaopen_posix_c (lua_State *L)
+@@ -4143,6 +4143,7 @@ LUALIB_API int luaopen_posix_c (lua_State *L)
  	MENTRY( ONLCR		);
  	MENTRY( OCRNL		);
  	MENTRY( ONLRET		);
 +#ifndef __FreeBSD_kernel__
  	MENTRY( OFILL		);
- #ifndef __GNU__
  	MENTRY( OFDEL		);
-@@ -4162,11 +4163,15 @@ LUALIB_API int luaopen_posix_c (lua_State *L)
+ 	MENTRY( NLDLY		);
+@@ -4153,11 +4154,15 @@ LUALIB_API int luaopen_posix_c (lua_State *L)
  	MENTRY( CR1		);
  	MENTRY( CR2		);
  	MENTRY( CR3		);
@@ -36,7 +36,7 @@ index fa4c0b9..083db4e 100644
  	MENTRY( BSDLY		);
  	MENTRY( BS0		);
  	MENTRY( BS1		);
-@@ -4176,6 +4181,7 @@ LUALIB_API int luaopen_posix_c (lua_State *L)
+@@ -4167,6 +4172,7 @@ LUALIB_API int luaopen_posix_c (lua_State *L)
  	MENTRY( FFDLY		);
  	MENTRY( FF0		);
  	MENTRY( FF1		);

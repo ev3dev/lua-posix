@@ -1,3 +1,9 @@
+lua-posix (29-4) unstable; urgency=low
+
+  * Use upstream's patch to support Hurd 
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Mon, 26 Aug 2013 10:44:24 +0200
+
 lua-posix (29-3) unstable; urgency=low
 
   * Ship the doc built using lua-doc 

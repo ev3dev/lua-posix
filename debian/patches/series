@@ -1,2 +1,2 @@
-0001-Fix-build-on-hurd-i386.patch
+0001-posix-port-getcwd-to-Hurd.patch
 0002-Fix-compilation-on-kfreebsd.patch
