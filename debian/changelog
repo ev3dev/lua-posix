@@ -1,3 +1,9 @@
+lua-posix (29-6) unstable; urgency=medium
+
+  * Fix FTBFS adding -I for ncursesws (Closes: #735759) 
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Fri, 17 Jan 2014 23:01:54 +0100
+
 lua-posix (29-5) unstable; urgency=low
 
   * Revert to our Hurd and kFreeBSD patch
