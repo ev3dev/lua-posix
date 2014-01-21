@@ -1,3 +1,9 @@
+lua-posix (29-7) unstable; urgency=medium
+
+  * Build-depend on lua-discount (Closes: #735976) 
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Tue, 21 Jan 2014 20:48:11 +0100
+
 lua-posix (29-6) unstable; urgency=medium
 
   * Fix FTBFS adding -I for ncursesws (Closes: #735759) 
