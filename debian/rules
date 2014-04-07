@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 %:
-		dh $@ --buildsystem=lua --with lua
+		dh $@ --buildsystem=lua --with autoreconf,lua
 
 override_dh_auto_configure:
 	./configure --prefix=/usr/ \
@@ -11,12 +11,15 @@ override_dh_auto_configure:
 
 override_dh_auto_build:
 	dh_auto_build
-	ldoc .
+	ldoc ext/posix/ 
+	perl build-aux/make_lcurses_doc.pl
+	mv doc/curses_c.html .
+	mv doc/curses.html .
 
 override_dh_auto_test:
 	touch dummy.la
 	dh_auto_test
 
 override_dh_auto_clean:
-	rm -f dummy.la
+	rm -f dummy.la curses.html curses_c.html
 	dh_auto_clean

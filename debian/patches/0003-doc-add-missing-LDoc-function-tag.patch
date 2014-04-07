@@ -1,0 +1,20 @@
+From: Enrico Tassi <gareuselesinge@debian.org>
+Date: Mon, 7 Apr 2014 10:09:07 +0200
+Subject: doc: add missing LDoc function tag.
+
+---
+ ext/posix/posix.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/ext/posix/posix.c b/ext/posix/posix.c
+index a4b1268..0be5385 100644
+--- a/ext/posix/posix.c
++++ b/ext/posix/posix.c
+@@ -2954,6 +2954,7 @@ static int Pstrftime(lua_State *L)
+ 
+ /***
+ Parse a date string.
++@function strptime
+ @see strptime(3)
+ @string s
+ @string format same as for `strftime`

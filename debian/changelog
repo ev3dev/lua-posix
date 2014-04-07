@@ -1,3 +1,13 @@
+lua-posix (31-1) unstable; urgency=medium
+
+  * New upstream release
+  * Fix compilation with lua-doc >= 1.4 (Closes: #742869), thanks Colin Watson
+  * Use autoreconf (Closes: #742870), thanks Colin Watson
+  * Drop patch 0002-Fix-compilation-on-kfreebsd.patch (sort of applied
+    upstream)
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Mon, 07 Apr 2014 09:45:48 +0200
+
 lua-posix (29-7) unstable; urgency=medium
 
   * Build-depend on lua-discount (Closes: #735976) 
