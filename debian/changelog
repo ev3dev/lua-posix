@@ -1,3 +1,17 @@
+lua-posix (31-3) unstable; urgency=medium
+
+  * Team upload
+  * Add luasandbox support
+  * Remove README.source, dpatch is gone since 5.1.9-1
+  * Fix d/watch, and point to github.com/luaposix/luaposix/
+  * Use secure Vcs-* fields
+  * Update d/copyright
+  * Replace multiarch-support by ${misc:Pre-Depends}.
+    This requires debhelper >= 9.
+  * Bump debhelper compat to 9
+
+ -- Mathieu Parent <sathieu@debian.org>  Sat, 10 Dec 2016 14:21:07 +0100
+
 lua-posix (31-2) unstable; urgency=medium
 
   * Sort examples alphabetically when generating the doc (Closes: #743920)
