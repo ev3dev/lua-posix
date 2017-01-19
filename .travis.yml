@@ -1,60 +1,87 @@
-# Lua is not officially supported, but an erlang environment will do.
-language: erlang
+language: python
+
+sudo: false
+
+addons:
+  apt:
+    packages:
+      - help2man
 
 env:
   global:
-    - PACKAGE=luaposix
-    - ROCKSPEC=$PACKAGE-git-1.rockspec
-    - LUAROCKS_CONFIG=build-aux/luarocks-config.lua
-    - LUAROCKS_BASE=luarocks-2.0.13
-    - LUAROCKS="$LUA $HOME/bin/luarocks"
-    - GENDOC=luarocks/bin/ldoc
-    - SPECL=bin/specl
+    - _inst=$TRAVIS_BUILD_DIR/_inst
+    - luadir=$_inst/share/lua
+    - luaexecdir=$_inst/lib/lua
   matrix:
-    - LUA=lua5.1             LUA_INCDIR=/usr/include/lua5.1
-    - LUA=lua5.2             LUA_INCDIR=/usr/include/lua5.2
-    - LUA=luajit-2.0.0-beta9 LUA_INCDIR=/usr/include/luajit-2.0
+    - VLUA="lua=5.3"
+    - VLUA="lua=5.2"
+    - VLUA="lua=5.1"
+    - VLUA="luajit=2.1"
+    - VLUA="luajit=2.0"
 
-# Tool setup.
+
+before_install:
+  - pip install hererocks
+  - hererocks here -r^ --$VLUA
+  - export PATH=$PWD/here/bin:$PATH
+
+
 install:
-  - sudo apt-get install help2man
-  - sudo apt-get install luajit
-  - sudo apt-get install libluajit-5.1-dev
-  - sudo apt-get install lua5.1
-  - sudo apt-get install liblua5.1-dev
-  - sudo apt-get install lua5.2
-  - sudo apt-get install liblua5.2-dev
-  # Luadoc and Ldoc work best on Travis with Lua 5.1.
-  - sudo apt-get install luarocks
-  - sudo luarocks install ldoc
-  - mkdir -p luarocks/bin
-  - sed 's|^exec "[^"]*"|exec lua5.1|' `which ldoc` > $GENDOC
-  - chmod a+rx $GENDOC
-  # Install a recent luarocks release locally for everything else.
-  - wget http://luarocks.org/releases/$LUAROCKS_BASE.tar.gz
-  - tar zxvpf $LUAROCKS_BASE.tar.gz
-  - cd $LUAROCKS_BASE
-  - ./configure
-    --prefix=$HOME --lua-version=5.1 --lua-suffix=5.1
-    --with-lua-include="/usr/include/lua5.1"
-  - make all install
-  - cd ..
+  # Use Lua 5.3 compatible rocks, where available.
+  - 'for rock in ansicolors ldoc specl""; do
+       if test -z "$rock"; then break; fi;
+       if luarocks list | grep "^$rock$" >/dev/null; then continue; fi;
+       luarocks install --server=http://rocks.moonscript.org/manifests/gvvaughan $rock;
+    done'
 
-# Configure and build.
+  # Fudge timestamps on release branches.
+  - 'if test -f configure; then
+      test -f aclocal.m4 && touch aclocal.m4;
+      sleep 1; touch Makefile.in;
+      sleep 1; test -f config.h.in && touch config.h.in;
+      sleep 1; touch configure;
+    fi'
+
+  # Build from rockspec, forcing uninstall of older luarocks installed
+  # above when testing the git rockspec, both for enforcing backwards
+  # compatibility by default, and for ease of maintenance.
+  - if test -f 'luaposix-33.4.0-1.rockspec'; then
+      luarocks make 'luaposix-33.4.0-1.rockspec';
+    else
+      luarocks make --force 'luaposix-git-1.rockspec';
+    fi
+
+
 script:
-  - ./bootstrap
-  - ./configure LUA="$LUA"
-  - make $LUAROCKS_CONFIG
-    LUA="$LUA" LUA_INCDIR="$LUA_INCDIR" V=1
-    || cat $LUAROCKS_CONFIG config.log
-  # Set Lua and Shell paths up for local luarocks tree.
-  - eval `$LUAROCKS path`
-  - export PATH=`pwd`/luarocks/bin:$PATH
-  - $LUAROCKS install lyaml; $LUAROCKS install specl;
-  - make rockspecs LUAROCKS="$LUAROCKS" V=1
-    || { $LUAROCKS path; cat $ROCKSPEC; }
-  # LuaRocks make will fail if dependencies are missing.
-  - $LUAROCKS make $ROCKSPEC LUA="$LUA"
-  # Use bin/specl if we built it, or else the specl rock we just installed.
-  - test -f "$SPECL" || SPECL=luarocks/bin/specl;
-    make check SPECL="$SPECL" V=1
+  # Reconfigure for in-tree test install.
+  - test -f configure || ./bootstrap --verbose
+  - LUA=`pwd`/here/bin/lua
+    LUA_INCLUDE=-I`pwd`/here/include
+    ./configure --prefix="$_inst" --disable-silent-rules
+
+  # Verify luarocks installation.
+  - make installcheck || make installcheck V=1
+
+  # Verify local build.
+  - make
+  - make check || make check V=1
+
+  # Verify configured installation.
+  - make install prefix="$_inst" luadir="$luadir" luaexecdir="$luaexecdir"
+  - LUA_PATH="$luadir/?.lua;$luadir/?/init.lua;;"
+    LUA_CPATH="$luaexecdir/?.so;;"
+    make installcheck V=1
+
+
+# Run sanity checks on CI server, ignoring buggy automakes.
+after_success:
+  - '{ _assign="=";
+       if grep local-checks-to-skip build-aux/sanity-cfg.mk >/dev/null; then
+         _assign="+=";
+       fi;
+       printf "local-checks-to-skip %s sc_vulnerable_makefile_CVE-2012-3386\n" "$_assign";
+     } >> build-aux/sanity-cfg.mk'
+  - 'make syntax-check || : this will usually fail on the release branch'
+
+notifications:
+  slack: aspirinc:JyWeNrIdS0J5nf2Pn2BS1cih
