@@ -1,6 +1,13 @@
-dnl Process this file with autoconf to produce a configure script
+## configure.ac
+## Written by Gary V. Vaughan, 2012
 
-AC_INIT([luaposix], [31], [http://github.com/luaposix/luaposix/issues])
+## Copyright (C) 2012-2016 Gary V. Vaughan
+
+## This file is part of luaposix.
+## See README for license.
+## ------------------------------------------------------------------------
+
+AC_INIT([luaposix], [33.4.0], [http://github.com/luaposix/luaposix/issues])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
 
@@ -10,14 +17,41 @@ echo
 AM_INIT_AUTOMAKE([-Wall subdir-objects])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
-dnl Check for programs
-AC_PROG_CC
-gl_EARLY
+## Check for programs
 AC_PROG_MKDIR_P
 AC_PROG_EGREP
 AC_PROG_SED
+AC_PROG_CC
 
 AC_USE_SYSTEM_EXTENSIONS
+
+
+## ------------------------------------------------------------------------
+## Compiler flags for POSIX 2008 or better compliance.
+## ------------------------------------------------------------------------
+
+AC_CANONICAL_HOST
+case $host_os in
+  *nto*|*qnx*)
+    # QNX is only POSIX 2001, but _XOPEN_SOURCE turns off other
+    # functions luaposix can bind.
+    AC_SUBST([POSIX_EXTRA_CPPFLAGS], [-DLPOSIX_2001_COMPLIANT])
+    ;;
+
+  darwin*|freebsd*|openbsd*)
+    # Setting _XOPEN_SOURCE here messes up header declarations, but
+    # all functions luaposix can bind are available without it.
+    AC_SUBST([POSIX_EXTRA_CPPFLAGS], [-DLPOSIX_2008_COMPLIANT])
+    ;;
+
+  *)
+    # Enable POSIX 2008.  Please send a $host_os match if your host
+    # is not compliant.
+    AC_SUBST([POSIX_EXTRA_CPPFLAGS], [-D_XOPEN_SOURCE=700])
+    ;;
+esac
+
+
 AC_ARG_ENABLE([gcc-warnings],
   [AS_HELP_STRING([--enable-gcc-warnings],
                   [turn on lots of GCC warnings (for developers)])],
@@ -64,7 +98,7 @@ if test "$gl_gcc_warnings" = yes; then
   gl_WARN_ADD([-fmudflap])
 fi
 
-dnl required by automake 1.12.x, not available in 1.10.x
+## required by automake 1.12.x, not available in 1.10.x
 m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
 
 LT_PREREQ([2.2.6])
@@ -76,62 +110,86 @@ AC_SUBST([objdir])
 AC_SUBST([shrext])
 AC_SUBST(LIBTOOL_DEPS)
 
-gl_INIT
-
-dnl Check for header files
+## Check for header files
 AC_HEADER_STDC
-AC_CHECK_HEADERS([crypt.h sys/statvfs.h])
+AC_CHECK_HEADERS([crypt.h sched.h strings.h sys/statvfs.h])
+AC_CHECK_HEADERS([net/if.h linux/netlink.h], [], [], [
+#include <sys/socket.h>
+])
 
-dnl Search libs
-AC_SEARCH_LIBS([crypt], [crypt],
-  [AC_DEFINE([HAVE_CRYPT], [], [Define this if your system has a crypt() function])])
+## SysV messaging
+AC_CHECK_HEADERS([sys/msg.h])
+AC_CHECK_FUNCS([msgrcv msgsnd])
+case $ac_cv_header_sys_msg_h,$ac_cv_func_msgrcv,$ac_cv_func_msgsnd in
+  yes,yes,yes)
+    AC_DEFINE([HAVE_SYSV_MESSAGING], [1], [Define if your system has SysV message APIs])
+    ;;
+esac
 
-dnl Check for functions
-AC_CHECK_FUNCS([strlcpy statvfs])
+## FreeBSD 10.x doesn't have fdatasync.
+AC_CHECK_FUNCS([fdatasync])
+AC_CHECK_DECLS_ONCE([fdatasync])
 
-dnl Compiler flags for POSIX
-dnl Get this from autotools/gnulib
-if test Darwin != `uname`; then
-  # FIXME: Make -lrt conditional on _XOPEN_REALTIME
-  POSIX_EXTRA_CFLAGS=-D_XOPEN_SOURCE=700
-  POSIX_EXTRA_LDFLAGS=-lrt
-fi
-AC_SUBST(POSIX_EXTRA_CFLAGS)
-AC_SUBST(POSIX_EXTRA_LDFLAGS)
-
-dnl Curses
-AX_WITH_CURSES
-if test "$ax_cv_curses" = "yes"; then
-  WANTEDLIBS=ext/curses/curses_c.la
-  WANTEDLUA=lib/curses.lua
-fi
-AC_ARG_VAR(CURSES_LIB, [linker flags for curses library])
-AC_SUBST(WANTEDLIBS)
-AC_SUBST(WANTEDLUA)
-
+## Search libs
 save_LIBS=$LIBS
-LIBS="$CURSES_LIB $LIBS"
-AC_CHECK_FUNCS([resizeterm])
+LIBS=
+AC_SEARCH_LIBS([crypt], [crypt],
+  [AC_DEFINE([HAVE_CRYPT], [1], [Define this if your system has a crypt() function])])
+AC_SUBST([LIBCRYPT], [$LIBS])
 LIBS=$save_LIBS
 
-dnl Lua 5.1 or 5.2
-AX_PROG_LUA(5.1, 5.3)
+## Socket (required for qnx, at least)
+save_LIBS=$LIBS
+LIBS=
+AC_SEARCH_LIBS([socket], [socket], [])
+AC_SUBST([LIBSOCKET], [$LIBS])
+LIBS=$save_LIBS
+
+# FIXME: Make -lrt conditional on _XOPEN_REALTIME
+save_LIBS=$LIBS
+LIBS=
+AC_CHECK_LIB([rt], [clock_gettime])
+AC_SUBST([LIBRT], [$LIBS])
+LIBS=$save_LIBS
+
+## Use system implementation, or bundled replacement?
+AC_CHECK_FUNCS([strlcpy])
+
+## ------------------------------------------------------------------------
+## Don't add more AC_CHECK_FUNCS, unless for a mainstream platform for one
+## of the reasons below (to detect whether to enable an optional set of
+## POSIX APIs; to disable a deprecated or very new and not yet widely
+## supported API).  This is a POSIX binding, and requires a reasonably
+## POSIX host to bind to - we definitely DON'T want to clutter up the code
+## and configury to support partially compliant hosts!
+## ------------------------------------------------------------------------
+
+## Thread scheduling priority
+AC_CHECK_FUNCS([sched_getsheduler sched_setscheduler])
+
+## Statvfs support
+AC_CHECK_FUNCS([statvfs])
+
+## Deprecated or otherwise spottily supported POSIX functions
+AC_CHECK_FUNCS([gethostid posix_fadvise])
+
+
+## Lua
+AX_PROG_LUA(5.1, 5.4)
 AX_LUA_HEADERS
 AC_PATH_PROG([SPECL], [specl], [:])
 
-dnl Perl
+## Perl
 AC_PATH_PROG([PERL], [perl])
 if test -z "$PERL"; then
   AC_MSG_FAILURE([cannot find perl])
 fi
 
-dnl ldoc
+## ldoc
 AC_PATH_PROG([LDOC], [ldoc], [false])
 AM_CONDITIONAL([HAVE_LDOC], [test false != "$LDOC"])
 
-dnl Generate output files
-SPECL_MIN=8
-SS_CONFIG_TRAVIS([ldoc specl])
+## Generate output files
 AC_CONFIG_HEADER(config.h)
-AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([Makefile build-aux/config.ld lib/posix/init.lua:lib/posix.lua.in])
 AC_OUTPUT
