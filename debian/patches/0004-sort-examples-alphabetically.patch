@@ -8,26 +8,29 @@ such directory
  ext/posix/config.ld | 13 ++++++++++++-
  1 file changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/ext/posix/config.ld b/ext/posix/config.ld
-index 2ca615f..104967d 100644
---- a/ext/posix/config.ld
-+++ b/ext/posix/config.ld
-@@ -14,6 +14,17 @@ custom_see_handler('^([%w_]+)%((%d)%)$',function(name,section)
-     return name, url
- end)
- 
--examples = 'examples'
+--- a/build-aux/config.ld.in
++++ b/build-aux/config.ld.in
+@@ -49,7 +49,22 @@ file = {
+   "../ext/posix/unistd.c",
+   "../ext/posix/utime.c",
+ }
+-examples = "../examples"
 +examples = {
-+'examples/dir.lua',
-+'examples/fork2.lua',
-+'examples/fork.lua',
-+'examples/getopt.lua',
-+'examples/glob.lua',
-+'examples/limit.lua',
-+'examples/poll.lua',
-+'examples/signal.lua',
-+'examples/socket.lua',
-+'examples/termios.lua',
++  "examples/dir.lua",
++  "examples/fork2.lua",
++  "examples/fork.lua",
++  "examples/getopt.lua",
++  "examples/glob.lua",
++  "examples/limit.lua",
++  "examples/lock.lua",
++  "examples/netlink-uevent.lua",
++  "examples/ping.lua",
++  "examples/poll.lua",
++  "examples/signal.lua",
++  "examples/socket.lua",
++  "examples/termios.lua",
++  "examples/tree.lua",
 +}
  
- format = 'discount'
+ boilerplate = true
+ backtick_references = false

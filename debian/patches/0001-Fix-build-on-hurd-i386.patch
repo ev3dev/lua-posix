@@ -7,26 +7,26 @@ See http://www.debian.org/ports/hurd/
  ext/posix/posix.c | 5 +++++
  1 file changed, 5 insertions(+)
 
-diff --git a/ext/posix/posix.c b/ext/posix/posix.c
-index d07648c..a4b1268 100644
 --- a/ext/posix/posix.c
 +++ b/ext/posix/posix.c
-@@ -11,6 +11,9 @@
- * With contributions by Roberto Ierusalimschy.
- * With documentation from Steve Donovan 2012
- */
+@@ -9,6 +9,9 @@
+  * With contributions by Roberto Ierusalimschy.
+  * With documentation from Steve Donovan 2012
+  */
 +#ifdef __GNU__
 +#define _GNU_SOURCE
 +#endif
  
- #include <config.h>
- 
-@@ -692,6 +695,8 @@ static int Pgetcwd(lua_State *L)
- 	}
+ #include "ctype.c"
+ #include "dirent.c"
+--- a/ext/posix/unistd.c
++++ b/ext/posix/unistd.c
+@@ -438,6 +438,8 @@ Pgetcwd(lua_State *L)
+ 	return pushstringresult(b);
  #else
  	long size = pathconf(".", _PC_PATH_MAX);
-+	if (size == -1)
-+		return pusherror(L, "pathconf");
++        if (size == -1)
++            return pusherror(L, "pathconf");
  	void *ud;
- 	lua_Alloc lalloc = lua_getallocf(L, &ud);
- 	char *b, *ret;
+ 	lua_Alloc lalloc;
+ 	char *b, *r;
