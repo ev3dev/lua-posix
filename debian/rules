@@ -13,9 +13,3 @@ override_dh_auto_build:
 	ldoc -c build-aux/config.ld ext/posix/
 
 override_dh_auto_test:
-	touch dummy.la
-	dh_auto_test
-
-override_dh_auto_clean:
-	rm -f dummy.la
-	dh_auto_clean
