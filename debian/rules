@@ -10,7 +10,7 @@ override_dh_auto_configure:
 
 override_dh_auto_build:
 	dh_auto_build
-	ldoc ext/posix/ 
+	ldoc -c build-aux/config.ld ext/posix/
 
 override_dh_auto_test:
 	touch dummy.la
