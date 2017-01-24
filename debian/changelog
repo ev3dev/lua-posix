@@ -1,5 +1,6 @@
 lua-posix (33.4.0-1) experimental; urgency=medium
 
+  [ Sophie Brun ]
   * Team upload.
   * Remove packages lua-curses*: moved in its own source package
   * Drop patches 0002-doc-fix-LDoc-manual-page-custom_see_handler-pattern.patch
@@ -8,6 +9,9 @@ lua-posix (33.4.0-1) experimental; urgency=medium
     of lua-bitop)
   * Add lua 5.3 support
   * Don't run the tests: need lua-specl package, not in Debian yet
+
+  [ Raphaël Hertzog ]
+  * Drop "Multi-Arch: same" on lua-posix-dev. Closes: #806751
 
  -- Sophie Brun <sophie@freexian.com>  Thu, 19 Jan 2017 11:13:41 +0100
 
