@@ -1,0 +1,3 @@
+# Can't have a named based on sonames since we have multiple libraries:
+# liblua5.1-posix1 liblua5.2-posix1 liblua5.3-posix1 libluasandbox-posix1
+package-name-doesnt-match-sonames *

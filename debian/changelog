@@ -1,5 +1,6 @@
 lua-posix (33.4.0-1) experimental; urgency=medium
 
+  * Team upload.
   * Remove packages lua-curses*: moved in its own source package
   * Drop patches 0002-doc-fix-LDoc-manual-page-custom_see_handler-pattern.patch
     and 0003-doc-add-missing-LDoc-function-tag.patch merged upstream
