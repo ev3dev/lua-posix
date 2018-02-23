@@ -1,3 +1,10 @@
+lua-posix (33.4.0-2) unstable; urgency=medium
+
+  * Team upload to unstable (with new lua-curses).
+  * Drop luasandbox support as it's going away (see #891191).
+
+ -- Raphaël Hertzog <hertzog@debian.org>  Fri, 23 Feb 2018 11:49:39 +0100
+
 lua-posix (33.4.0-1) experimental; urgency=medium
 
   [ Sophie Brun ]
