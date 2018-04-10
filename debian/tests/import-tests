@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+for dhlua in debian/*.posix.dh-lua.conf; do
+    lua=$(basename $dhlua .posix.dh-lua.conf)
+    echo "Testing with $lua"
+    $lua debian/posix-test.lua
+done

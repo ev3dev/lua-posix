@@ -1,0 +1,2 @@
+Tests: import-tests
+Depends: @, dh-lua 
