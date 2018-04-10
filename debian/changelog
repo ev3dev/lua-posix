@@ -1,3 +1,19 @@
+lua-posix (33.4.0-3) UNRELEASED; urgency=medium
+
+  * Team upload.
+
+  [ Roland Hieber ]
+  * Fix name of main module: posix_c.so -> posix.so (Closes: #891541)
+
+  [ Raphaël Hertzog ]
+  * Add a simple test file to test loading the module
+  * Update Vcs-* fields for migration to salsa.debian.org
+  * Switch debhelper compat level to 11
+  * Bump Standards-Version to 4.1.4
+  * Add simple autopkgtest which just imports the module.
+
+ -- Raphaël Hertzog <hertzog@debian.org>  Tue, 10 Apr 2018 11:31:15 +0200
+
 lua-posix (33.4.0-2) unstable; urgency=medium
 
   * Team upload to unstable (with new lua-curses).
