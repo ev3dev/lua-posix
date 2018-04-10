@@ -3,7 +3,7 @@ Section: interpreters
 Priority: optional
 Maintainer: Enrico Tassi <gareuselesinge@debian.org>
 Build-Depends: debhelper (>= 11), dh-lua, lua-ldoc, lua-bit32
-Standards-Version: 3.9.8
+Standards-Version: 4.1.4
 Vcs-Git: https://salsa.debian.org/lua-team/lua-posix.git
 Vcs-Browser: https://salsa.debian.org/lua-team/lua-posix
 Homepage: https://github.com/luaposix/luaposix
