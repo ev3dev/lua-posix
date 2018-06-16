@@ -1,3 +1,9 @@
+lua-posix (33.4.0-3ev3dev1) stable; urgency=medium
+
+  * ev3dev takeover
+
+ -- David Lechner <david@lechnology.com>  Sat, 16 Jun 2018 13:01:58 -0500
+
 lua-posix (33.4.0-3) unstable; urgency=medium
 
   * Team upload.
